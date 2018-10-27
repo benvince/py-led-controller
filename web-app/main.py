@@ -1,3 +1,5 @@
+#!/bin/python
+
 from flask import Flask, render_template, request
 import sqlite3
 
@@ -10,19 +12,22 @@ def index():
 
 @app.route('/zones', methods = ['POST', 'GET'])
 def setup_zones():
-
+    
+    #Connect to DB:-
+    db = sqlite3.connect("data.sql")
+    cur = db.cursor()
+   
+   #If posting, store new zone into database:-
     if(request.method == "POST"):
         for key, value in request.items():
             print(key)
         
 
-    db = sqlite3.connect("data.sql")
-    cur = db.cursor()
-
+    #Get Zones from Database:-
     cur.execute("SELECT * FROM ZONES")
-    
     data = cur.fetchall()
-
+    
+    #Return zones.html template and pass zone data from db to it:-
     return(render_template("zones.html", zones = data))
 
 

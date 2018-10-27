@@ -1,0 +1,48 @@
+<html>
+	<head>
+		<title>Setup Zones</title>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+	</head>
+
+	<script type="text/javascript">
+$('.collapsed-table > caption').click(function() {
+   $(this).toggleClass('collapsed-table');
+})
+</script>
+
+	<body>
+		<h1>Setup Zones</h1>
+
+		<form id='new_zone' action='zones' method='post' class="collapsed-table" >
+			<caption>Expand/collapce</caption>
+			Zone Name: <input type='text' id='txt_new_zone_name'/><br>
+			Zone IP Address:  <input type='text' id='txt_ip_addr'/><br>
+			Zone Port Number:  <input type='text' id='txt_port'/><br>
+			No of LEDs:  <input type='text' id='txt_no_leds'/></br>
+			<input type='submit' value="Add Zone">
+		</form>
+	
+		<table>
+			<tr>
+				<td><b>Zone Name</b></td>
+				<td><b>IP Address</b></td>
+				<td><b>Enabled</b></td>
+				<td><b>Status</b></td>
+			</tr>
+			
+			{% for item in zones %}
+			<tr>
+				<td> {{ item[1] }}</td> 
+				<td> {{ item[2] }}</td> 
+				<td> {{ item[5] }}</td>
+			</tr>
+			{% endfor %}
+
+		</table>
+	
+	
+	</body>
+
+</html>
+
