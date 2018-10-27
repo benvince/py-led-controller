@@ -1,0 +1,29 @@
+<html>
+	<head>
+		<title>Setup Zones</title>
+	</head>
+
+	<body>
+		<h1>Setup Zones</h1>
+
+		<form id='new_zone' action='zones' method='post' >
+			Zone Name: <input type='text' id='txt_new_zone_name'/>
+			<input type='submit' value="Add Zone">
+		</form>
+	
+		<table>
+			<tr>
+				<td><b> Zone Name</b></td>
+			</tr>
+			
+			{% for item in zones %}
+			<tr><td> {{ item[1] }}</td> </tr>
+			{% endfor %}
+
+		</table>
+	
+	
+	</body>
+
+</html>
+
