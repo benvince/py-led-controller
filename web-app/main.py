@@ -54,10 +54,10 @@ def all_zones():
             config = json.loads(zone_config.text)
             html += "<b> Zone Address: {}:{}<br></b> ".format(zone_ip, zone_port)
             html += "Zone Name: {}</br>".format(config['zone_name'])
-            html += "No. of LEDs: {}".format(config['num_leds'])
- 
+            html += "No. of LEDs: {}<br>".format(config['num_leds'])
+            html += "Pin of RPI for LEDS: {}<br>".format(config['pin_no']) 
         except:
-            html += "Can't connect to {}:{}".format(zone_ip, zone_port)
+            html += "Can't connect to {}:{}<br>".format(zone_ip, zone_port)
 
     return(html) 
 
