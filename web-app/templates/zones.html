@@ -24,16 +24,20 @@
 				<tr>
 					<td><b>Zone Name</b></td>
 					<td><b>IP Address</b></td>
-					<td><b>Enabled</b></td>
 					<td><b>Status</b></td>
 				</tr>
 				
 				{% for item in zones %}
 				<tr>
-					<td> {{ item[1] }}</td> 
 					<td> {{ item[2] }}</td> 
-					<td> {{ item[5] }}</td>
-				</tr>
+                    <td> {{ "{}:{}".format(item[0],item[1]) }}</td>
+                    <td> {{ item[3] }}</td>
+                    {% if item[3] == "ONLINE" %}
+                    <td><button
+                        onclick="javascript:location.href='{{"http://{}:{}/api/toggle_light".format(item[0],
+                        item[1])}}'">Toggle</button></td>
+                    {% endif %}
+                </tr>
 				{% endfor %}
 
 			</table>
